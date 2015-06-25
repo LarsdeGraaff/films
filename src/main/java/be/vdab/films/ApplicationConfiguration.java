@@ -24,7 +24,7 @@ public class ApplicationConfiguration {
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource=new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://lcoalhost:3306/films");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/films");
         dataSource.setUsername("root");
         dataSource.setPassword("");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -32,7 +32,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource){
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setPackagesToScan("be.vdab");
