@@ -2,11 +2,13 @@ package be.vdab.films;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 /**
@@ -42,7 +44,10 @@ public class FilmController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(Film film){
+    public String create(@Valid Film film, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "film/form";
+        }
         filmRepository.save(film);
         return "redirect:/films";
     }

@@ -22,6 +22,7 @@
         <div class="form-group">
             <label for="title">Title</label>
             <sf:input path="title" class="form-control" />
+            <sf:errors path="title"/>
         </div>
         <div class="form-group">
                 <sf:input path="urlImage" class="form-control"/>
